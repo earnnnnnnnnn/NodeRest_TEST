@@ -52,11 +52,14 @@ app.get('/books', (req, res) => {
   });
 // route to update a book
 app.put('/books/:id', (req, res) => {
-    const book = books.find(b => b.id === parseInt(req.params.id));
-    if(!book) res.status(404).send('Book not found');
-    book.title = req.body.title;
-    book.author = req.body.author;
-    res.send(book);
+    const book = req.body;
+    db.run('UPDATE books SET title = ?, author = ? WHERE id = ?', book.title, book.author, req.params.id, function(err) {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.send(book);
+        }
+    });
 });
 
 // route to delete a book

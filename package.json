@@ -5,16 +5,19 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "format": "prettier --write *.js"
+    "format": "prettier --write *.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Kochakorn",
   "license": "ISC",
   "devDependencies": {
+    "nodemon": "^3.1.9",
     "prettier": "^3.5.0"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "sqlite3": "^5.1.7"
   }
 }
